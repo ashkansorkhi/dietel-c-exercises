@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1778187705 source:d:\c coding\dietel-c-exercises\shuffling the deck\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
