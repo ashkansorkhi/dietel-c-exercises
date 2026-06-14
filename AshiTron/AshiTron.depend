@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1779099907 source:d:\c coding\dietel-c-exercises\ashitron\main.c
+1779548616 source:d:\c coding\dietel-c-exercises\ashitron\main.c
 	<stdio.h>
 	<stdlib.h>
+	<conio.h>
 
