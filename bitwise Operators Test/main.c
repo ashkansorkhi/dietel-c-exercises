@@ -1,30 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define CARDS 52
 
-void bitDisplay(unsigned int num);
+
+struct bitCard{
+    unsigned int face :4;
+    unsigned int suit :2;
+};
+typedef struct bitCard Card;
+
+void deckFill(CARDS deck[]);
+void deal(CARDS deck[]);
 
 int main()
 {
-unsigned int number1 = 5324;
-unsigned int mask = 1;
-bitDisplay(number1);
-bitDisplay(~number1);
-bitDisplay(mask);
-bitDisplay(~mask);
-bitDisplay(mask & number1);
-bitDisplay(mask | number1);
-bitDisplay(mask ^ number1);
+
+card Deck[CARDS] = {0};
+deckFill(Deck);
+
+
+
 }
 
+void deckFill(CARDS deck[]){
 
-void bitDisplay(unsigned int num){
+    for(size_t i = 0 ; i < CARDS ; i++){
 
-    unsigned int displayMask =1<< 31;
-    for(int i =1 ; i<=32; i++){
-        putchar( num & displayMask?'1':'0');
-        num <<=1;
-        if(i %8 == 0)
-            putchar(' ');
+
     }
-    putchar('\n');
+
 }

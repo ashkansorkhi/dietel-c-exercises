@@ -1,0 +1,46 @@
+# depslib dependency file v1.0
+1781698759 source:d:\c coding\dietel-c-exercises\cannon\main.c
+	<math.h>
+	"raylib.h"
+
+1781645386 c:\raylib\w64devkit\include\math.h
+	<crtdefs.h>
+
+1781645385 c:\raylib\w64devkit\include\crtdefs.h
+	<corecrt.h>
+
+1781645385 c:\raylib\w64devkit\include\corecrt.h
+	<_mingw.h>
+	<winapifamily.h>
+
+1781645387 c:\raylib\w64devkit\include\_mingw.h
+	"_mingw_mac.h"
+	"_mingw_secapi.h"
+	"_cygwin.h"
+	<vadefs.h>
+
+1781645387 c:\raylib\w64devkit\include\_mingw_mac.h
+
+1781645387 c:\raylib\w64devkit\include\_mingw_secapi.h
+
+1781645387 c:\raylib\w64devkit\include\_cygwin.h
+	<stddef.h>
+
+1781645386 c:\raylib\w64devkit\include\stddef.h
+	<crtdefs.h>
+
+1781645386 c:\raylib\w64devkit\include\vadefs.h
+	<_mingw.h>
+
+1781645387 c:\raylib\w64devkit\include\winapifamily.h
+
+1781645386 c:\raylib\w64devkit\include\raylib.h
+	<stdarg.h>
+	<stdbool.h>
+
+1781645386 c:\raylib\w64devkit\include\stdarg.h
+	<_mingw_stdarg.h>
+
+1781645387 c:\raylib\w64devkit\include\_mingw_stdarg.h
+	<vadefs.h>
+
