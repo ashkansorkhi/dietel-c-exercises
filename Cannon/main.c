@@ -143,8 +143,8 @@ static const int missPenalty = 2; // seconds deducted on a miss
 static const int hitReward = 3; // seconds added on a hit
 
 // global static constants for scaling Cannon size, based on screen size
-static const double cannonBaseRadiusPercent = 3.0 / 40;
-static const double cannonBarrelWidthPercent = 3.0 / 40;
+static const double cannonBaseRadiusPercent = 3.0 /40;
+static const double cannonBarrelWidthPercent =3.0 / 40;
 static const double cannonBarrelLengthPercent = 1.0 / 10;
 
 // global static constants for scaling Cannonball's size and speed
@@ -234,7 +234,7 @@ void InitGame(void) {
    shotsFired = 0;
 
    // configure the Cannon
-   cannon.baseRadius = cannonBaseRadiusPercent * screenHeight;
+   cannon.baseRadius =cannonBaseRadiusPercent * screenHeight;
    cannon.barrelLength = cannonBarrelLengthPercent * screenWidth;
    cannon.barrelStart.x = 0; // left edge of screen
    cannon.barrelStart.y = screenHeight / 2; // vertical center of screen
