@@ -48,17 +48,48 @@ void deleteAccount(clientStruct *,FILE *);
 int main(void){
     clientStruct client = {0,"","",0.0};
     FILE *cltPtr = 0;
-    
-    createListOfAccounts(&client); //initialize the file and list 
+    int choice = 0;
+  //initialize the file and list 
     
     if((cltPtr = fopen("accounts.txt","rb+")) == 0)
         puts("cannot find the file");
 
     else {
-        printListOfAccounts(&client,cltPtr);
         puts("Welcome\n    please Enter: 1 to make the list of clients\n   please Enter: 2 edit client informations\n   please Enter: 3 to delete a client \n please  Enter: 4 to add a client  ");
+
+        scanf("%d",&choice);
+
+        switch (choice)
+        {
+        case 1:
+             
+        createListOfAccounts(&client);     
+
+            break;
+        
+        case 2:
+        
         updateAccount(&client,cltPtr);
-         printListOfAccounts(&client,cltPtr);
+
+            break; 
+
+        case 3:
+            deleteAccount(&client,cltPtr);
+            break;
+
+        case 4:
+        
+        createNewAccount(&client,cltPtr);
+        
+            break;
+        
+        default:
+
+        puts("Please Enter a valid code");
+            break;
+        }
+        
+        printListOfAccounts(&client,cltPtr);
 
     }
 fclose(cltPtr);
@@ -147,8 +178,58 @@ void printListOfAccounts(clientStruct * client,FILE * filePtr){
     rewind(filePtr);
         puts("account number  first name  last name  balance");
         while(fread(client,sizeof(clientStruct),1,filePtr)!=0){
+            if(client->accountNumber != 0)
             printf("%d %12s %12s %lf\n",client->accountNumber,client->firstName,client->lastName,client->balance);
    
         }
+
+}
+
+
+void createNewAccount(clientStruct * client,FILE * filePtr){
+    
+    rewind(filePtr);
+
+    puts("please Enter the account number between 1-100:");
+
+    int accountNumber = 0;
+
+    scanf("%d",&accountNumber);
+
+    while(fread(client,sizeof(clientStruct),1,filePtr) !=0){
+            if(client->accountNumber == accountNumber){
+                puts("the account number you've Entered is in list choose another number:");
+                scanf("%d",&accountNumber);
+                rewind(filePtr);
+            }
+        
+    }
+    client->accountNumber = accountNumber;
+    puts("please Enter first name last name balance:");
+    scanf("%29s%29s%lf",client->firstName,client->lastName,&client->balance);
+    fwrite(client,sizeof(clientStruct),1,filePtr);
+
+}
+
+
+
+void deleteAccount(clientStruct * client,FILE * filePtr){
+     rewind(filePtr);
+
+    puts("please Enter the account number:");
+
+    int accountNumber = 0;
+
+    scanf("%d",&accountNumber);
+
+     while(fread(client,sizeof(clientStruct),1,filePtr) !=0){
+            if(client->accountNumber == accountNumber){
+                fseek(filePtr,(accountNumber - 1) * sizeof(clientStruct),SEEK_SET);
+                *client = (clientStruct) {0,"","",0.0};
+             fwrite(client, sizeof(clientStruct),1,filePtr);
+            }
+        
+    }
+
 
 }
