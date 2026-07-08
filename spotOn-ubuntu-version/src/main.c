@@ -117,6 +117,12 @@ typedef struct Life {
    Color color; // stores color's r, g, b, a components
 } Life;
 
+typedef struct {
+ char name[10];
+ int score ;   
+
+}scoreRecord 
+
 // global static constants
 static const int screenWidth = 800;
 static const int screenHeight = 450;
