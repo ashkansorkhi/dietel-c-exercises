@@ -163,7 +163,7 @@ static Sound disappear;
 static Sound siren;
 
 // function prototypes
-static void InitGame(void);
+static void InitGame(FILE *);
 static void UpdateGame(void);
 static void DrawGame(void);
 static void UnloadGame(void);
@@ -174,8 +174,10 @@ static void increaseSpotSpeed(void);
 int main(void) {
 
    // initialization
+   FILE * scoresFilePtr = 0;
+   scoresFilePtr = fopen("scores.dat","rb+");
    InitWindow(screenWidth, screenHeight, "SpotOn"); // prepare game window
-   InitGame(); // load sounds; initialize game elements and state
+   InitGame(scoresFilePtr); // load sounds; initialize game elements and state
    SetTargetFPS(60); // target animation frame rate
 
    // main game loop processing
@@ -186,16 +188,17 @@ int main(void) {
 
    // termination cleanup
    UnloadGame(); // unload game sounds and release raylib's audio resources
+   fclose(scoreFilePtr);
    CloseWindow(); // close the game window
 }
 
 // initialize a new game
-void InitGame(void) {
+void InitGame(FILE * filePtr) {
 
    // load sounds: this is performed once
    if (firstInitialization) {
       // raylib function InitAudioDevice prepares the raylib audio system
-      
+
       InitAudioDevice();
 
       // raylib function LoadSound loads a specified sound file;
