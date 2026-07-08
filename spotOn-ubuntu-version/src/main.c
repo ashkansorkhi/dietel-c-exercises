@@ -195,7 +195,7 @@ void InitGame(void) {
    // load sounds: this is performed once
    if (firstInitialization) {
       // raylib function InitAudioDevice prepares the raylib audio system
-
+      
       InitAudioDevice();
 
       // raylib function LoadSound loads a specified sound file;
