@@ -10,9 +10,9 @@ typedef struct {
 
 //prototypes
 
-void initializeFile(HardWares*);
+FILE * initializeFile(HardWares*,FILE *);
 void printMenu(void);
-
+void addTool(HardWares*,FILE *);
 
 
 
@@ -21,15 +21,17 @@ int main(void){
 
     int choice =0;
     HardWares hardware = {0,"",0,0.0};
-
-    initializeFile(&hardware);
+    FILE *filePtr = 0;
+    if((filePtr = fopen("hardware.dat","rb+") ) == 0){
+       filePtr = initializeFile(&hardware,filePtr);
+    }
     printMenu();
 
     while(choice !=-1){
     switch (choice)
     {
     case 1 :
-        addTool();
+        addTool(&hardware,filePtr);
         break;
         
      case 2 :
@@ -50,19 +52,19 @@ puts("end of program.");
 
 
 
- void initializeFile(HardWares *hardware){
-    FILE * filePtr = 0;
+ FILE * initializeFile(HardWares *hardware,FILE * filePtr){
 
- if (filePtr = fopen("hardware.dat","wd") ==0)
+
+ if ((filePtr = fopen("hardware.dat","wb") )==0)
  {
-    puts("cannot open the file in initializeFile");
+    puts("cannot Create the file");
  }
  else{
     for( int i =1 ; i <=100 ; i++)
         fwrite(hardware,sizeof(HardWares),1,filePtr);
 
  }
-fclose(filePtr);
+return filePtr;
 
 
  }
@@ -74,5 +76,15 @@ fclose(filePtr);
  puts("1.For adding new tool.");
  puts("2.For edit a tool");
  puts ("3.For delete a tool");
+
+ }
+
+
+
+
+ void addTool(HardWares*,FILE *){
+
+    
+
 
  }
