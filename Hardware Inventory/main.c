@@ -28,16 +28,16 @@ int main(void){
     while(choice !=-1){
     switch (choice)
     {
-    case 1 
-        addTool() 
+    case 1 :
+        addTool();
         break;
         
-     case 2 
-        editTool() 
+     case 2 :
+        editTool();
         break;
         
-    case 3
-        deleteTool() 
+    case 3:
+        deleteTool();
         break;
     default:
         puts("invalid choice!");
@@ -64,5 +64,15 @@ puts("end of program.");
  }
 fclose(filePtr);
 
+
+ }
+
+
+ void printMenu(void){
+ puts("*****WELCOME*****");
+ puts("Please Enter:");
+ puts("1.For adding new tool.");
+ puts("2.For edit a tool");
+ puts ("3.For delete a tool");
 
  }
