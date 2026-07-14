@@ -14,6 +14,7 @@ FILE * initializeFile(HardWares*,FILE *);
 void printMenu(void);
 void addTool(HardWares*,FILE *);
 void showInventory(HardWares*,FILE *);
+void deleteTool(HardWares * tool,FILE * filePtr)
 
 
 
@@ -126,3 +127,7 @@ puts ("4.To show inventory");
 
 
  }
+
+  void deleteTool(HardWares * tool,FILE * filePtr){
+
+  }
