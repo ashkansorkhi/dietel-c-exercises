@@ -14,7 +14,7 @@ FILE * initializeFile(HardWares*,FILE *);
 void printMenu(void);
 void addTool(HardWares*,FILE *);
 void showInventory(HardWares*,FILE *);
-void deleteTool(HardWares * tool,FILE * filePtr)
+void deleteTool(HardWares * tool,FILE * filePtr);
 
 
 
@@ -48,7 +48,7 @@ int main(void){
         break;
         
     case 3:
-       // deleteTool();
+        deleteTool(&hardware,filePtr);
         break;
     case 4:
         showInventory(&hardware,filePtr);
@@ -129,5 +129,14 @@ puts ("4.To show inventory");
  }
 
   void deleteTool(HardWares * tool,FILE * filePtr){
+    int toolNumber = 0 ;
+
+    puts("Please Enter the Tool number:");
+
+        scanf("%d",&toolNumber);
+    
+    fseek(filePtr, (toolNumber - 1) * sizeof(HardWares),SEEK_SET);
+        *tool = (HardWares){0,"",0,0.0};
+        fwrite(tool,sizeof(HardWares),1,filePtr);
 
   }
