@@ -19,21 +19,27 @@ char delete(listNodePtr *startPtr,char value);
     switch (choice)
     {
     case 1:
-          puts("enter the character");
-    scanf(" %c",&character);
-    puts("");
-    while (character != '0')
-    {
-     insert(&startPtr,character);
-     printNode(&startPtr);
-     scanf(" %c",&character);
-     puts("");
-    }
+        puts("enter the character");
+        scanf(" %c",&character);
+        puts("");
+        while (character != '0')
+        {
+              insert(&startPtr,character);
+             printNode(&startPtr);
+             scanf(" %c",&character);
+             puts("");
+             }
         break;
     case 2:
-
+        puts("Enter the character you want to delete:");
+        scanf(" %c",&character);
+        char deletedChar = delete(&startPtr,character);
+        printf("char %c deleted\n",deletedChar);
+        puts("new linked list table:");
+        printNode(&startPtr);
         break;
     default:
+    puts("invalid code");
         break;
     }
  
