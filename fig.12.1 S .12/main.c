@@ -9,13 +9,15 @@ typedef struct listNode
 
 typedef listNode *listNodePtr;
 void insert(listNodePtr *,char );
-void printNode(const listNodePtr *);
+void printNode(const listNodePtr );
 char delete(listNodePtr *startPtr,char value);
  int main(void){
     listNodePtr startPtr = NULL;
     char character = ' ';
     int choice = 0 ;
     puts("please Enter:\n1.to add new character and\n2.to delete a character");
+    scanf("%d",&choice);
+    while(choice !=3 ){
     switch (choice)
     {
     case 1:
@@ -25,10 +27,11 @@ char delete(listNodePtr *startPtr,char value);
         while (character != '0')
         {
               insert(&startPtr,character);
-             printNode(&startPtr);
+             printNode(startPtr);
              scanf(" %c",&character);
              puts("");
              }
+
         break;
     case 2:
         puts("Enter the character you want to delete:");
@@ -36,14 +39,15 @@ char delete(listNodePtr *startPtr,char value);
         char deletedChar = delete(&startPtr,character);
         printf("char %c deleted\n",deletedChar);
         puts("new linked list table:");
-        printNode(&startPtr);
+        printNode(startPtr);
         break;
     default:
     puts("invalid code");
         break;
     }
- 
-    
+ puts("please Enter:\n1.to add new character and\n2.to delete a character");
+ scanf("%d",&choice);
+}
     
  }
 
@@ -82,19 +86,19 @@ char delete(listNodePtr *startPtr,char value);
  }
 
 
- void printNode(const listNodePtr * node){
-    listNodePtr currentPtr =    *node;
+ void printNode(listNodePtr currentPtr){
 
     while(currentPtr->nextPtr != NULL){
         printf("%c --> ", currentPtr->value);
         currentPtr = currentPtr->nextPtr;
     }
+    puts("NULL");
  }
 
 
  char delete(listNodePtr *startPtr,char value){
 
-    if(value = (*startPtr)->value){
+    if(value == (*startPtr)->value){
         listNodePtr tempNode = *startPtr;
         *startPtr = (*startPtr)->nextPtr;
         free(tempNode);
@@ -111,7 +115,7 @@ char delete(listNodePtr *startPtr,char value);
 
         if(currentNode !=NULL){
             listNodePtr tempNode = currentNode;
-            currentNode = currentNode->nextPtr;
+            previousNode->nextPtr = currentNode->nextPtr;
             free(tempNode);
             return value;
         }
