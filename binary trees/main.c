@@ -19,6 +19,9 @@ typedef struct binaryTree *binaryTreePtr ;
 
 //prototypes
 void insertNode(int value , binaryTreePtr * parentNode); 
+void inOrder(binaryTreePtr treePtr);
+void preOrder(binaryTreePtr treePtr);
+void postOrder(binaryTreePtr treePtr);
 
 
 int main(void){
@@ -34,7 +37,15 @@ for(int i =1 ; i<=10; i++){
     printf("%d ",number);
     insertNode(number,&parent);
 }
-    
+
+puts("\n\nThe preOrder traversal is:");
+preOrder(parent);
+// traverse the tree inOrder
+puts("\n\nThe inOrder traversal is:");
+inOrder(parent);
+// traverse the tree postOrder
+puts("\n\nThe postOrder traversal is:");
+postOrder(parent);
 
 }
 
@@ -77,5 +88,32 @@ void insertNode(int value , binaryTreePtr * parentNode)
     }
 
 
+}
 
+
+
+void inOrder(binaryTreePtr treePtr)
+{
+    if (treePtr != NULL) {
+    inOrder(treePtr->leftSubTree);
+    printf("%d ",treePtr->data);
+    inOrder(treePtr->rightSubTree);
+    }
+}
+
+void preOrder(binaryTreePtr treePtr)
+{
+    if (treePtr != NULL) {
+    printf("%d ",treePtr->data);
+    preOrder(treePtr->leftSubTree);
+    preOrder(treePtr->rightSubTree);
+    }
+}
+
+void postOrder(binaryTreePtr treePtr){
+    if (treePtr != NULL) {
+    postOrder(treePtr->leftSubTree);
+    postOrder(treePtr->rightSubTree);
+    printf("%d ",treePtr->data);
+    }
 }
