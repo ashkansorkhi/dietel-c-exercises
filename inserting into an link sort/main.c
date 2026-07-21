@@ -17,24 +17,24 @@ typedef numbers *numberPtr;
 
 
 //prototypes
-void insertingNumbers(int value ,numberPtr * startNode);
+void insertingNumbers(int value ,numberPtr * startNode,numberPtr * tailNode);
 void printLinkedList(numberPtr headNode);
 
 int main(void)
 {
 
    numberPtr startPtr = NULL;
-   
+   numberPtr tailNode = NULL;
     srand(time(NULL));
     
     for(int i = 1; i <= 25; i++)
-        insertingNumbers(rand()%100,&startPtr);
+        insertingNumbers(rand()%100,&startPtr,&tailNode);
     printLinkedList(startPtr);
 }
 
 
 
-void insertingNumbers(int value ,numberPtr * startNode)
+void insertingNumbers(int value ,numberPtr * startNode,numberPtr * tailNode)
 {
 
     numberPtr newNode = malloc(sizeof(numbers));
@@ -44,23 +44,17 @@ void insertingNumbers(int value ,numberPtr * startNode)
 
     newNode->value = value;
     newNode->nextNumber = NULL;
-    
-    numberPtr previusNode = NULL;
-    numberPtr currentNode = *startNode;
 
-    if(currentNode == NULL)
+    if( *startNode  == NULL)
+    {
         *startNode = newNode;
-    
-    else{
+        *tailNode = newNode;
+    }
 
-         while(currentNode != NULL)
-        {
-            previusNode = currentNode;
-            currentNode = currentNode->nextNumber;
-        }
-
-        currentNode = newNode;
-        previusNode->nextNumber  = currentNode;
+    else
+    {
+        (*tailNode)->nextNumber = newNode;
+        *tailNode = newNode;
     }
     
   
@@ -80,4 +74,5 @@ void printLinkedList(numberPtr headNode)
         printf("%d ",headNode->value);
         headNode= headNode->nextNumber;
     }
+    puts("");
 }
