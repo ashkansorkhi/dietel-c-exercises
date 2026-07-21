@@ -19,7 +19,7 @@ typedef numbers *numberPtr;
 //prototypes
 void insertingNumbers(int value ,numberPtr * startNode,numberPtr * tailNode);
 void printLinkedList(numberPtr headNode);
-
+void freeLinkList(numberPtr  startNode);
 int main(void)
 {
 
@@ -30,6 +30,9 @@ int main(void)
     for(int i = 1; i <= 25; i++)
         insertingNumbers(rand()%100,&startPtr,&tailNode);
     printLinkedList(startPtr);
+    freeLinkList(startPtr);
+    startPtr = NULL;
+    tailNode = NULL;
 }
 
 
@@ -75,4 +78,16 @@ void printLinkedList(numberPtr headNode)
         headNode= headNode->nextNumber;
     }
     puts("");
+}
+
+
+
+void freeLinkList(numberPtr  startNode){
+    numberPtr temp = NULL;
+    while(*startNode !=NULL)
+    {
+        temp = startNode;
+        free(temp);
+        startNode = startNode->nextNumber;
+    }
 }
